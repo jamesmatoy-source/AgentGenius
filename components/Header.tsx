@@ -1,22 +1,36 @@
 import React, { useState } from 'react';
 import { Menu, X, Bot } from 'lucide-react';
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  currentPage: 'home' | 'principles';
+  onNavigate: (page: 'home' | 'principles') => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const navLinks = [
-    { name: 'Capabilities', href: '#services' },
-    { name: 'Our Agents', href: '#demo' },
-    { name: 'Insights', href: '#' },
-    { name: 'Careers', href: '#' },
-  ];
+  const handleNavClick = (page: 'home' | 'principles', href?: string) => {
+    onNavigate(page);
+    setIsMobileMenuOpen(false);
+    if (href && page === 'home') {
+      setTimeout(() => {
+        const element = document.querySelector(href);
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black text-white h-24 flex items-center border-b-4 border-enterprise-purple">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black text-white h-24 flex items-center border-b-4 border-enterprise-purple shadow-lg">
       <div className="container mx-auto px-6 lg:px-16 flex items-center justify-between h-full">
         
         {/* Logo Area */}
-        <div className="flex items-center gap-3 group cursor-pointer">
+        <div 
+            className="flex items-center gap-3 group cursor-pointer"
+            onClick={() => handleNavClick('home')}
+        >
           <div className="bg-white p-2 transition-transform group-hover:scale-105 duration-300">
             <Bot className="text-black w-8 h-8" strokeWidth={2.5} />
           </div>
@@ -28,16 +42,30 @@ const Header: React.FC = () => {
 
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center h-full ml-auto">
-          {navLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href} 
-              className="relative h-full flex items-center px-6 text-sm font-bold text-white hover:bg-zinc-900 transition-colors uppercase tracking-wider group"
-            >
-              {link.name}
-              <div className="absolute bottom-0 left-0 w-full h-1 bg-enterprise-purple scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-            </a>
-          ))}
+          <button 
+            onClick={() => handleNavClick('home', '#services')}
+            className="relative h-full flex items-center px-6 text-sm font-bold text-white hover:bg-zinc-900 transition-colors uppercase tracking-wider group"
+          >
+            Capabilities
+            <div className="absolute bottom-0 left-0 w-full h-1 bg-enterprise-purple scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+          </button>
+          
+          <button 
+            onClick={() => handleNavClick('home', '#demo')}
+            className="relative h-full flex items-center px-6 text-sm font-bold text-white hover:bg-zinc-900 transition-colors uppercase tracking-wider group"
+          >
+            Our Agents
+            <div className="absolute bottom-0 left-0 w-full h-1 bg-enterprise-purple scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+          </button>
+
+          <button 
+            onClick={() => handleNavClick('principles')}
+            className={`relative h-full flex items-center px-6 text-sm font-bold transition-colors uppercase tracking-wider group ${currentPage === 'principles' ? 'text-enterprise-purple bg-zinc-900' : 'text-white hover:bg-zinc-900'}`}
+          >
+            Principles
+            <div className={`absolute bottom-0 left-0 w-full h-1 bg-enterprise-purple transition-transform duration-300 origin-left ${currentPage === 'principles' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></div>
+          </button>
+
           <div className="h-full flex items-center pl-6 border-l border-gray-800 ml-2">
              <a 
               href="#contact"
@@ -61,16 +89,25 @@ const Header: React.FC = () => {
       {isMobileMenuOpen && (
         <div className="lg:hidden absolute top-24 left-0 right-0 bg-black border-t border-gray-800 shadow-2xl h-screen">
           <nav className="flex flex-col p-8">
-            {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-2xl font-bold text-white py-6 border-b border-gray-800 hover:text-enterprise-purple transition-colors uppercase tracking-wider"
+             <button 
+                onClick={() => handleNavClick('home', '#services')}
+                className="text-left text-2xl font-bold text-white py-6 border-b border-gray-800 hover:text-enterprise-purple transition-colors uppercase tracking-wider"
               >
-                {link.name}
-              </a>
-            ))}
+                Capabilities
+              </button>
+              <button 
+                onClick={() => handleNavClick('home', '#demo')}
+                className="text-left text-2xl font-bold text-white py-6 border-b border-gray-800 hover:text-enterprise-purple transition-colors uppercase tracking-wider"
+              >
+                Our Agents
+              </button>
+              <button 
+                onClick={() => handleNavClick('principles')}
+                className="text-left text-2xl font-bold text-white py-6 border-b border-gray-800 hover:text-enterprise-purple transition-colors uppercase tracking-wider"
+              >
+                Principles
+              </button>
+
             <a 
               href="#contact"
               onClick={() => setIsMobileMenuOpen(false)}

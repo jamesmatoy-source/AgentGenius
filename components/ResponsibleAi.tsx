@@ -3,7 +3,7 @@ import { ArrowRight, BrainCircuit } from 'lucide-react';
 
 const ResponsibleAi: React.FC = () => {
   return (
-    <section className="relative py-32 bg-gradient-to-br from-[#1e1b4b] via-[#312e81] to-[#4c1d95] text-white overflow-hidden">
+    <section className="relative py-32 bg-gradient-to-br from-[#1e1b4b] via-[#312e81] to-[#4c1d95] text-white overflow-hidden selection:bg-enterprise-purple selection:text-white">
       {/* Geometric Overlay */}
       <div className="absolute inset-0 opacity-20 pointer-events-none">
           <div className="absolute top-0 right-0 w-full h-full bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:100px_100px]"></div>
