@@ -52,6 +52,7 @@ const tools = [
   { name: 'OpenAI', src: 'https://cdn.simpleicons.org/openai' },
   { name: 'Perplexity', src: 'https://cdn.simpleicons.org/perplexity' },
   { name: 'HubSpot', src: 'https://cdn.simpleicons.org/hubspot' },
+  { name: 'Supabase', src: 'https://cdn.simpleicons.org/supabase' },
 ];
 
 const Expertise: React.FC = () => {

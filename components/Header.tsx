@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { Menu, X, Bot } from 'lucide-react';
+import { Menu, X, Bot, Settings } from 'lucide-react';
 
 interface HeaderProps {
-  currentPage: 'home' | 'principles';
-  onNavigate: (page: 'home' | 'principles') => void;
+  currentPage: 'home' | 'principles' | 'blog' | 'cms';
+  onNavigate: (page: 'home' | 'principles' | 'blog' | 'cms') => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const handleNavClick = (page: 'home' | 'principles', href?: string) => {
+  const handleNavClick = (page: 'home' | 'principles' | 'blog' | 'cms', href?: string) => {
     onNavigate(page);
     setIsMobileMenuOpen(false);
     if (href && page === 'home') {
@@ -43,6 +43,14 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center h-full ml-auto">
           <button 
+            onClick={() => handleNavClick('home')}
+            className={`relative h-full flex items-center px-6 text-sm font-bold transition-colors uppercase tracking-wider group ${currentPage === 'home' ? 'text-enterprise-purple bg-zinc-900' : 'text-white hover:bg-zinc-900'}`}
+          >
+            Home
+            <div className={`absolute bottom-0 left-0 w-full h-1 bg-enterprise-purple transition-transform duration-300 origin-left ${currentPage === 'home' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></div>
+          </button>
+
+          <button 
             onClick={() => handleNavClick('home', '#services')}
             className="relative h-full flex items-center px-6 text-sm font-bold text-white hover:bg-zinc-900 transition-colors uppercase tracking-wider group"
           >
@@ -64,6 +72,22 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
           >
             Principles
             <div className={`absolute bottom-0 left-0 w-full h-1 bg-enterprise-purple transition-transform duration-300 origin-left ${currentPage === 'principles' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></div>
+          </button>
+
+          <button 
+            onClick={() => handleNavClick('blog')}
+            className={`relative h-full flex items-center px-6 text-sm font-bold transition-colors uppercase tracking-wider group ${currentPage === 'blog' ? 'text-enterprise-purple bg-zinc-900' : 'text-white hover:bg-zinc-900'}`}
+          >
+            Blog
+            <div className={`absolute bottom-0 left-0 w-full h-1 bg-enterprise-purple transition-transform duration-300 origin-left ${currentPage === 'blog' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></div>
+          </button>
+
+          <button 
+            onClick={() => handleNavClick('cms')}
+            className={`relative h-full flex items-center px-4 text-sm font-bold transition-colors uppercase tracking-wider group ${currentPage === 'cms' ? 'text-enterprise-purple bg-zinc-900' : 'text-gray-500 hover:text-white hover:bg-zinc-900'}`}
+            title="CMS Admin"
+          >
+            <Settings className="w-4 h-4" />
           </button>
 
           <div className="h-full flex items-center pl-6 border-l border-gray-800 ml-2">
@@ -90,6 +114,13 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
         <div className="lg:hidden absolute top-24 left-0 right-0 bg-black border-t border-gray-800 shadow-2xl h-screen">
           <nav className="flex flex-col p-8">
              <button 
+                onClick={() => handleNavClick('home')}
+                className={`text-left text-2xl font-bold py-6 border-b border-gray-800 transition-colors uppercase tracking-wider ${currentPage === 'home' ? 'text-enterprise-purple' : 'text-white hover:text-enterprise-purple'}`}
+              >
+                Home
+              </button>
+
+             <button 
                 onClick={() => handleNavClick('home', '#services')}
                 className="text-left text-2xl font-bold text-white py-6 border-b border-gray-800 hover:text-enterprise-purple transition-colors uppercase tracking-wider"
               >
@@ -103,9 +134,21 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
               </button>
               <button 
                 onClick={() => handleNavClick('principles')}
-                className="text-left text-2xl font-bold text-white py-6 border-b border-gray-800 hover:text-enterprise-purple transition-colors uppercase tracking-wider"
+                className={`text-left text-2xl font-bold py-6 border-b border-gray-800 transition-colors uppercase tracking-wider ${currentPage === 'principles' ? 'text-enterprise-purple' : 'text-white hover:text-enterprise-purple'}`}
               >
                 Principles
+              </button>
+              <button 
+                onClick={() => handleNavClick('blog')}
+                className={`text-left text-2xl font-bold py-6 border-b border-gray-800 transition-colors uppercase tracking-wider ${currentPage === 'blog' ? 'text-enterprise-purple' : 'text-white hover:text-enterprise-purple'}`}
+              >
+                Blog
+              </button>
+               <button 
+                onClick={() => handleNavClick('cms')}
+                className={`text-left text-2xl font-bold py-6 border-b border-gray-800 transition-colors uppercase tracking-wider ${currentPage === 'cms' ? 'text-enterprise-purple' : 'text-gray-500 hover:text-white'}`}
+              >
+                Admin CMS
               </button>
 
             <a 

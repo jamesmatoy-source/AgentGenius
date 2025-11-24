@@ -1,13 +1,13 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, CheckCircle } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative pt-24 min-h-[85vh] flex flex-col lg:flex-row bg-white">
+    <section className="relative pt-24 min-h-[90vh] flex flex-col lg:flex-row bg-white">
       
       {/* Left Content Block */}
       <div className="w-full lg:w-1/2 flex flex-col justify-center px-6 lg:px-16 py-20 z-10 bg-white text-black">
-        <div className="max-w-2xl">
+        <div className="max-w-3xl">
           <div className="mb-6 flex items-center gap-4">
             <div className="w-16 h-2 bg-enterprise-purple"></div>
             <span className="font-bold uppercase tracking-widest text-sm text-gray-600">
@@ -15,19 +15,32 @@ const Hero: React.FC = () => {
             </span>
           </div>
           
-          <h1 className="text-6xl lg:text-7xl font-black text-black leading-[0.9] mb-8 tracking-tight">
-            DEPLOY <br/>
+          <h1 className="text-5xl lg:text-7xl font-black text-black leading-[0.9] mb-6 tracking-tight">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-enterprise-purple to-enterprise-darkPurple">
-              AUTONOMOUS
+              Automate.
             </span> <br/>
-            AGENTS.
+            Delegate. <br/>
+            Scale.
           </h1>
           
-          <p className="text-xl text-gray-600 mb-12 leading-relaxed max-w-lg font-medium">
-            Agent Genius architects enterprise-grade digital workers. 
-            We replace repetitive cognitive load with self-learning AI agents 
-            that scale infinitely and execute with precision.
+          <p className="text-2xl text-black font-bold mb-10 leading-tight">
+            The AI layer that scales how your business works.
           </p>
+
+          <ul className="space-y-5 mb-12">
+            {[
+                "Turn complex data into clear, actionable intelligence.",
+                "Automate the busywork so your team can scale what truly matters.",
+                "Achieve more impact with fewer resources — no extra headcount required.",
+                "Deploy custom AI agents built to fit your business, not the other way around.",
+                "Predict trends before they happen and uncover insights others miss."
+            ].map((item, i) => (
+                <li key={i} className="flex items-start gap-4 group">
+                    <CheckCircle className="w-6 h-6 text-enterprise-purple flex-shrink-0 mt-1 group-hover:scale-110 transition-transform duration-300" />
+                    <span className="text-lg text-gray-700 font-medium leading-snug">{item}</span>
+                </li>
+            ))}
+          </ul>
           
           <div className="flex flex-col sm:flex-row gap-0">
             <a 
