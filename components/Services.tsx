@@ -36,7 +36,7 @@ const services = [
 
 const Services: React.FC = () => {
   return (
-    <section id="services" className="py-24 bg-[#f2f2f2] text-black">
+    <section id="services" className="py-24 bg-[#f2f2f2] text-black scroll-mt-24">
       <div className="container mx-auto px-6 lg:px-16">
         
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b-2 border-gray-300 pb-8">

@@ -126,8 +126,8 @@ const App: React.FC = () => {
         {page === 'home' && (
           <>
             <Hero />
-            <Services />
             <WhoWeHelp />
+            <Services />
             <ResponsibleAi onLearnMore={() => handleNavigate('principles')} />
             <HowItWorks />
             <Expertise />

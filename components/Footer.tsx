@@ -105,6 +105,7 @@ const Footer: React.FC = () => {
           <div className="flex flex-wrap gap-6 mb-4 md:mb-0 justify-center md:justify-start">
              <span className="hover:text-white cursor-pointer">Privacy</span>
              <span className="hover:text-white cursor-pointer">Terms</span>
+             <span className="hover:text-white cursor-pointer">Responsible AI</span>
              <span className="hover:text-white cursor-pointer">Accessibility</span>
              <span className="hover:text-white cursor-pointer">Cookie Policy</span>
           </div>

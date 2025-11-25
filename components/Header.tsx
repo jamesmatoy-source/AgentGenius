@@ -41,26 +41,42 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
         </div>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center h-full ml-auto">
+        <nav className="hidden xl:flex items-center h-full ml-auto">
           <button 
             onClick={() => handleNavClick('home')}
-            className={`relative h-full flex items-center px-6 text-sm font-bold transition-colors uppercase tracking-wider group ${currentPage === 'home' ? 'text-enterprise-purple bg-zinc-900' : 'text-white hover:bg-zinc-900'}`}
+            className={`relative h-full flex items-center px-5 text-sm font-bold transition-colors uppercase tracking-wider group ${currentPage === 'home' ? 'text-enterprise-purple bg-zinc-900' : 'text-white hover:bg-zinc-900'}`}
           >
             Home
             <div className={`absolute bottom-0 left-0 w-full h-1 bg-enterprise-purple transition-transform duration-300 origin-left ${currentPage === 'home' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></div>
           </button>
 
           <button 
+            onClick={() => handleNavClick('home', '#who-we-help')}
+            className="relative h-full flex items-center px-5 text-sm font-bold text-white hover:bg-zinc-900 transition-colors uppercase tracking-wider group"
+          >
+            Who We Help
+            <div className="absolute bottom-0 left-0 w-full h-1 bg-enterprise-purple scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+          </button>
+
+          <button 
             onClick={() => handleNavClick('home', '#services')}
-            className="relative h-full flex items-center px-6 text-sm font-bold text-white hover:bg-zinc-900 transition-colors uppercase tracking-wider group"
+            className="relative h-full flex items-center px-5 text-sm font-bold text-white hover:bg-zinc-900 transition-colors uppercase tracking-wider group"
           >
             Capabilities
             <div className="absolute bottom-0 left-0 w-full h-1 bg-enterprise-purple scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
           </button>
           
           <button 
+            onClick={() => handleNavClick('home', '#how-it-works')}
+            className="relative h-full flex items-center px-5 text-sm font-bold text-white hover:bg-zinc-900 transition-colors uppercase tracking-wider group"
+          >
+            How It Works
+            <div className="absolute bottom-0 left-0 w-full h-1 bg-enterprise-purple scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+          </button>
+
+          <button 
             onClick={() => handleNavClick('home', '#demo')}
-            className="relative h-full flex items-center px-6 text-sm font-bold text-white hover:bg-zinc-900 transition-colors uppercase tracking-wider group"
+            className="relative h-full flex items-center px-5 text-sm font-bold text-white hover:bg-zinc-900 transition-colors uppercase tracking-wider group"
           >
             Our Agents
             <div className="absolute bottom-0 left-0 w-full h-1 bg-enterprise-purple scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
@@ -68,15 +84,15 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
 
           <button 
             onClick={() => handleNavClick('principles')}
-            className={`relative h-full flex items-center px-6 text-sm font-bold transition-colors uppercase tracking-wider group ${currentPage === 'principles' ? 'text-enterprise-purple bg-zinc-900' : 'text-white hover:bg-zinc-900'}`}
+            className={`relative h-full flex items-center px-5 text-sm font-bold transition-colors uppercase tracking-wider group ${currentPage === 'principles' ? 'text-enterprise-purple bg-zinc-900' : 'text-white hover:bg-zinc-900'}`}
           >
-            Principles
+            Responsible AI
             <div className={`absolute bottom-0 left-0 w-full h-1 bg-enterprise-purple transition-transform duration-300 origin-left ${currentPage === 'principles' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></div>
           </button>
 
           <button 
             onClick={() => handleNavClick('blog')}
-            className={`relative h-full flex items-center px-6 text-sm font-bold transition-colors uppercase tracking-wider group ${currentPage === 'blog' ? 'text-enterprise-purple bg-zinc-900' : 'text-white hover:bg-zinc-900'}`}
+            className={`relative h-full flex items-center px-5 text-sm font-bold transition-colors uppercase tracking-wider group ${currentPage === 'blog' ? 'text-enterprise-purple bg-zinc-900' : 'text-white hover:bg-zinc-900'}`}
           >
             Blog
             <div className={`absolute bottom-0 left-0 w-full h-1 bg-enterprise-purple transition-transform duration-300 origin-left ${currentPage === 'blog' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></div>
@@ -93,7 +109,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
           <div className="h-full flex items-center pl-6 border-l border-gray-800 ml-2">
              <a 
               href="#contact"
-              className="px-8 py-3 text-sm font-bold text-black bg-white border-2 border-white hover:bg-black hover:text-white transition-all duration-300 uppercase tracking-widest"
+              className="px-6 py-3 text-sm font-bold text-black bg-white border-2 border-white hover:bg-black hover:text-white transition-all duration-300 uppercase tracking-widest whitespace-nowrap"
             >
               Contact Us
             </a>
@@ -102,7 +118,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
 
         {/* Mobile Toggle */}
         <button 
-          className="lg:hidden text-white p-2 hover:bg-zinc-800 transition-colors"
+          className="xl:hidden text-white p-2 hover:bg-zinc-800 transition-colors"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X size={32} /> : <Menu size={32} />}
@@ -111,7 +127,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
 
       {/* Mobile Nav */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden absolute top-24 left-0 right-0 bg-black border-t border-gray-800 shadow-2xl h-screen">
+        <div className="xl:hidden absolute top-24 left-0 right-0 bg-black border-t border-gray-800 shadow-2xl h-screen overflow-y-auto pb-32">
           <nav className="flex flex-col p-8">
              <button 
                 onClick={() => handleNavClick('home')}
@@ -120,12 +136,27 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
                 Home
               </button>
 
+              <button 
+                onClick={() => handleNavClick('home', '#who-we-help')}
+                className="text-left text-2xl font-bold text-white py-6 border-b border-gray-800 hover:text-enterprise-purple transition-colors uppercase tracking-wider"
+              >
+                Who We Help
+              </button>
+
              <button 
                 onClick={() => handleNavClick('home', '#services')}
                 className="text-left text-2xl font-bold text-white py-6 border-b border-gray-800 hover:text-enterprise-purple transition-colors uppercase tracking-wider"
               >
                 Capabilities
               </button>
+
+              <button 
+                onClick={() => handleNavClick('home', '#how-it-works')}
+                className="text-left text-2xl font-bold text-white py-6 border-b border-gray-800 hover:text-enterprise-purple transition-colors uppercase tracking-wider"
+              >
+                How It Works
+              </button>
+
               <button 
                 onClick={() => handleNavClick('home', '#demo')}
                 className="text-left text-2xl font-bold text-white py-6 border-b border-gray-800 hover:text-enterprise-purple transition-colors uppercase tracking-wider"
@@ -136,7 +167,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
                 onClick={() => handleNavClick('principles')}
                 className={`text-left text-2xl font-bold py-6 border-b border-gray-800 transition-colors uppercase tracking-wider ${currentPage === 'principles' ? 'text-enterprise-purple' : 'text-white hover:text-enterprise-purple'}`}
               >
-                Principles
+                Responsible AI
               </button>
               <button 
                 onClick={() => handleNavClick('blog')}
