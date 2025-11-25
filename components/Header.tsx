@@ -24,7 +24,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black text-white h-24 flex items-center border-b-4 border-enterprise-purple shadow-lg">
-      <div className="container mx-auto px-6 lg:px-16 flex items-center justify-between h-full">
+      <div className="w-full px-6 lg:px-16 flex items-center justify-between h-full">
 
         {/* Logo Area */}
         <div
