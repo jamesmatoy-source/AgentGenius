@@ -43,18 +43,18 @@ const industries = [
 const WhoWeHelp: React.FC = () => {
   return (
     <section id="who-we-help" className="py-24 bg-white text-black border-t border-gray-200">
-      <div className="container mx-auto px-6 lg:px-16">
-        
+      <div className="w-full px-6 lg:px-16">
+
         {/* Header Section */}
-        <div className="flex flex-col md:flex-row justify-between items-start mb-16 border-b border-gray-200 pb-12">
+        <div className="flex flex-col md:flex-row gap-16 items-start mb-16 border-b border-gray-200 pb-12">
           <div className="max-w-3xl">
-             <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-1 bg-enterprise-purple"></div>
-                <span className="text-enterprise-purple font-bold uppercase tracking-widest text-sm">Industries Served</span>
-             </div>
-             <h2 className="text-4xl md:text-6xl font-black text-black leading-[0.95] tracking-tight mb-8">
-               Who We Help Accelerate Performance and Innovation
-             </h2>
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-12 h-1 bg-enterprise-purple"></div>
+              <span className="text-enterprise-purple font-bold uppercase tracking-widest text-sm">Industries Served</span>
+            </div>
+            <h2 className="text-4xl md:text-6xl font-black text-black leading-[0.95] tracking-tight mb-8">
+              Who We Help Accelerate Performance and Innovation
+            </h2>
           </div>
           <div className="max-w-md mt-8 md:mt-0 text-right md:text-left">
             <p className="text-gray-600 font-medium leading-relaxed text-lg mb-6">
@@ -69,8 +69,8 @@ const WhoWeHelp: React.FC = () => {
         {/* Industry Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-gray-200">
           {industries.map((industry, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className="p-10 border-r border-b border-gray-200 group hover:bg-gray-50 transition-colors duration-300 relative"
             >
               {/* Purple Accent on Hover */}
@@ -79,13 +79,13 @@ const WhoWeHelp: React.FC = () => {
               <h3 className="text-xl font-bold mb-4 uppercase tracking-tight text-black group-hover:text-enterprise-purple transition-colors pr-4">
                 {industry.title}
               </h3>
-              
+
               <p className="text-gray-500 font-medium leading-relaxed text-sm group-hover:text-gray-800 transition-colors">
                 {industry.description}
               </p>
 
               <div className="mt-6 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-[-10px] group-hover:translate-x-0">
-                 <ArrowRight className="w-5 h-5 text-enterprise-purple" />
+                <ArrowRight className="w-5 h-5 text-enterprise-purple" />
               </div>
             </div>
           ))}
