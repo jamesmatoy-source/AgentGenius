@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import Services from './components/Services';
-import WhoWeHelp from './components/WhoWeHelp';
-import ResponsibleAi from './components/ResponsibleAi';
-import HowItWorks from './components/HowItWorks';
-import Expertise from './components/Expertise';
-import AiDemo from './components/AiDemo';
-import CtaBanner from './components/CtaBanner';
-import Footer from './components/Footer';
-import GuidingPrinciples from './components/GuidingPrinciples';
-import Blog, { BlogPostType } from './components/Blog';
-import BlogPost from './components/BlogPost';
-import CmsDashboard from './components/CmsDashboard';
+import Header from './components/Shared/Header';
+import Hero from './components/MainPage/Hero';
+import Services from './components/MainPage/Services';
+import WhoWeHelp from './components/MainPage/WhoWeHelp';
+import ResponsibleAi from './components/MainPage/ResponsibleAi';
+import HowItWorks from './components/MainPage/HowItWorks';
+import Expertise from './components/MainPage/Expertise';
+import AiDemo from './components/MainPage/AiDemo';
+import CtaBanner from './components/MainPage/CtaBanner';
+import Footer from './components/Shared/Footer';
+import GuidingPrinciples from './components/ResponsibleAi/GuidingPrinciples';
+import Blog, { BlogPostType } from './components/Blog/Blog';
+import BlogPost from './components/Blog/BlogPost';
+import CmsDashboard from './components/Blog/CmsDashboard';
 
 const INITIAL_POSTS: BlogPostType[] = [
   {
@@ -97,7 +97,7 @@ const App: React.FC = () => {
   const handleNavigate = (newPage: 'home' | 'principles' | 'blog' | 'cms') => {
     setPage(newPage);
     if (newPage !== 'blog') {
-        setSelectedPost(null);
+      setSelectedPost(null);
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -121,7 +121,7 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen font-sans selection:bg-enterprise-purple selection:text-white">
       <Header currentPage={page} onNavigate={handleNavigate} />
-      
+
       <main>
         {page === 'home' && (
           <>
@@ -135,22 +135,22 @@ const App: React.FC = () => {
             <CtaBanner />
           </>
         )}
-        
+
         {page === 'principles' && <GuidingPrinciples />}
-        
+
         {page === 'blog' && !selectedPost && (
-            <Blog posts={posts} onPostClick={handlePostClick} />
+          <Blog posts={posts} onPostClick={handlePostClick} />
         )}
 
         {page === 'blog' && selectedPost && (
-            <BlogPost post={selectedPost} onBack={handleBackToBlog} />
+          <BlogPost post={selectedPost} onBack={handleBackToBlog} />
         )}
 
         {page === 'cms' && (
-            <CmsDashboard onSave={handleCmsSave} onCancel={() => handleNavigate('blog')} />
+          <CmsDashboard onSave={handleCmsSave} onCancel={() => handleNavigate('blog')} />
         )}
       </main>
-      
+
       <Footer />
     </div>
   );
